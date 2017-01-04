@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: foo-bar-ingress
+spec:
+  tls:
+  - hosts:
+    - foo-bar.example.com
+    secretName: foo-bar-secret
+  rules:
+  - host: foo-bar.example.com
+    http:
+      paths:
+      - path: /foo
+        backend:
+          serviceName: foo-svc
+          servicePort: 80
+      - path: /bar
+        backend:
+          serviceName: bar-svc
+          servicePort: 80
